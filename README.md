@@ -1,147 +1,264 @@
-README - Sistema de Reservas para Restaurante
-📌 Sobre o Projeto
+# 🍽️ Sistema de Reservas para Restaurante
 
-Este projeto consiste no desenvolvimento de um Sistema de Reservas para Restaurante, capaz de gerenciar reservas de mesas e espaços do estabelecimento, evitando conflitos de horários e organizando as informações dos clientes.
+## 📖 Sobre o Projeto
 
-O sistema foi desenvolvido como parte do Projeto Semestral da disciplina de Programação, do curso de Engenharia de Software do Centro Universitário Tiradentes de Pernambuco (UNIT-PE).
+Este projeto consiste no desenvolvimento de um **Sistema de Reservas para Restaurante**, capaz de gerenciar reservas de mesas e espaços do estabelecimento, evitando conflitos de horários e organizando as informações dos clientes.
 
-🎯 Objetivo
+O sistema foi desenvolvido como parte do **Projeto Semestral da disciplina de Programação**, do curso de **Engenharia de Software do Centro Universitário Tiradentes de Pernambuco (UNIT-PE)**.
 
-Desenvolver uma aplicação que permita:
+A aplicação foi implementada em **Java**, utilizando **Programação Orientada a Objetos (POO)** e integração com banco de dados **MySQL**, permitindo o armazenamento persistente das reservas e dos espaços disponíveis no restaurante.
 
-Criar reservas de clientes;
-Consultar reservas cadastradas;
-Cancelar reservas;
-Controlar horários disponíveis;
-Evitar reservas duplicadas para o mesmo horário;
-Organizar informações dos clientes e espaços reservados.
-📖 Contexto
+---
 
-O restaurante disponibiliza diferentes espaços para seus clientes, como:
+# 🎯 Objetivo
 
-Mesas comuns;
-Salas privadas;
-Espaços para eventos.
+O principal objetivo do sistema é automatizar o processo de gerenciamento de reservas de um restaurante, garantindo:
 
-O sistema auxilia o recepcionista no gerenciamento dessas reservas, garantindo melhor organização e atendimento aos clientes.
+* Controle eficiente dos espaços disponíveis;
+* Organização das reservas realizadas pelos clientes;
+* Evitar conflitos de horários;
+* Controle da capacidade de mesas e salas;
+* Registro de requerimentos especiais;
+* Diferentes níveis de acesso para cada tipo de usuário.
 
-👥 Atores do Sistema
-Cliente
+---
 
-Responsável por solicitar uma reserva.
+# 👥 Atores do Sistema
 
-Recepcionista
+O sistema foi desenvolvido considerando quatro tipos de usuários:
 
-Responsável por cadastrar, consultar e cancelar reservas.
+## Cliente
+## Recepcionista
+## Administrador
+## Equipe da Cozinha
 
-Administrador
+- Usuários diferentes de clientes são considerados funcionários e é solicitada uma senha para a realização do login. Esta sendo _123_
+Apenas para fins mais interativos.
 
-Responsável por acompanhar a utilização dos espaços e consultar relatórios.
+---
 
-Equipe da Cozinha
+# ⚙️ Funcionalidades Implementadas
 
-Pode consultar informações especiais associadas às reservas.
+## Gestão de Reservas
 
-⚙️ Funcionalidades Implementadas
-1. Criar Reserva
+O sistema permite:
 
-Permite cadastrar uma nova reserva informando:
+* Criar reservas;
+* Alterar reservas existentes;
+* Cancelar reservas;
+* Consultar reservas cadastradas.
 
-Nome do cliente;
-Horário;
-Data;
-Espaço reservado.
+---
 
-O sistema verifica se já existe uma reserva para o mesmo horário e data antes de efetuar o cadastro.
+## Controle de Conflitos
 
-2. Consultar Reservas
+Para evitar problemas de agendamento, o sistema verifica automaticamente:
 
-Exibe todas as reservas cadastradas contendo:
+* Data da reserva;
+* Horário da reserva;
+* Espaço reservado.
 
-Nome do cliente;
-Data;
-Horário;
-Espaço reservado.
-3. Cancelar Reserva
+Cada reserva possui uma duração padrão de:
 
-Permite remover uma reserva cadastrada através do nome do cliente.
+**4 horas**
 
-4. Encerrar Sistema
+Caso exista outra reserva no mesmo espaço durante esse período, o sistema impede o cadastro.
 
-Finaliza a execução do programa.
+**Exemplo:**
 
-🏗️ Estrutura do Projeto
-Classe Main
+Reserva existente:
 
-Responsável pelo menu principal e interação com o usuário.
+Data: 25/06/2026, Horário: 19:00 às 23:00
 
-Funções:
+Nova solicitação:
 
-Criar reservas;
-Exibir reservas;
-Cancelar reservas;
-Encerrar o sistema.
-Classe Reserva
+Data: 25/06/2026, Horário: 20:00
 
-Responsável por armazenar os dados de uma reserva.
+**Resultado:**
 
-Atributos
-String cliente;
-int horario;
-int data;
-int espaco;
-Construtor
-public Reserva(String cliente, int horario, int data, int espaco)
-Classe Cliente (Planejada)
+Reserva negada por conflito de horário.
 
-Responsável por armazenar informações dos clientes.
+---
 
-Atributos
-String nome;
-int telefone;
-Classe Mesa (Planejada)
+## Controle de Capacidade
 
-Responsável por armazenar informações das mesas.
+Cada mesa ou sala possui uma capacidade máxima cadastrada.
 
-Atributos
-int numero;
-int capacidade;
-String disponibilidade;
-🛠️ Tecnologias Utilizadas
-Java
-Programação Orientada a Objetos (POO)
-ArrayList
-Scanner
-📋 Regras de Negócio
-Não é permitido cadastrar duas reservas no mesmo horário e data.
-Toda reserva deve possuir um cliente associado.
-Apenas reservas existentes podem ser canceladas.
-O sistema deve exibir todas as reservas cadastradas quando solicitado.
-🚀 Possíveis Melhorias Futuras
-Cadastro completo de clientes;
-Cadastro de mesas e salas;
-Relatórios de ocupação;
-Busca de disponibilidade por data;
-Controle de capacidade das mesas;
-Registro de necessidades especiais (alergias, acessibilidade etc.);
-Interface gráfica;
-Persistência de dados em banco de dados.
-📚 Conceitos Aplicados
+Caso a quantidade de pessoas informada ultrapasse a capacidade do espaço, a reserva não é permitida.
 
-Durante o desenvolvimento deste projeto foram utilizados os seguintes conceitos:
+---
 
-Classes e Objetos;
-Encapsulamento;
-Construtores;
-Coleções (ArrayList);
-Estruturas de decisão (switch);
-Estruturas de repetição (while);
-Tratamento de exceções;
-Organização de código orientada a objetos.
-📄 Autor
+## Atribuição Automática de Espaços
 
-Projeto desenvolvido para fins acadêmicos na disciplina de Programação do curso de Engenharia de Software – UNIT Pernambuco.
+O sistema realiza a atribuição automática do espaço mais adequado para a reserva.
 
-Tema: Sistema de Reservas para Restaurante.
-Semestre: 2026.1
-Professor: Dr. David Barrientos. 
+Critérios:
+
+* Mesmo tipo de espaço solicitado;
+* Capacidade suficiente;
+* Menor capacidade possível para evitar desperdício de lugares.
+
+**Exemplo:**
+
+Reserva para 5 pessoas.
+
+**Espaços disponíveis:**
+
+Mesa 01 → 2 lugares
+
+Mesa 02 → 4 lugares
+
+Mesa 03 → 6 lugares
+
+Mesa 04 → 8 lugares
+
+**Resultado:**
+
+*Mesa 03 atribuída automaticamente.*
+
+---
+
+## Requerimentos Especiais
+
+Durante a criação da reserva, é possível registrar observações especiais, como:
+
+* Alergias alimentares;
+* Necessidades de acessibilidade;
+* Decorações especiais;
+* Cardápios personalizados;
+* Restrições alimentares.
+
+Essas informações ficam disponíveis para a equipe da cozinha.
+
+---
+
+## Relatórios
+
+O sistema permite gerar relatórios por período.
+
+Exemplo:
+
+Data Inicial: 01/06/2026
+
+Data Final: 30/06/2026
+
+Resultado:
+
+* Quantidade total de reservas;
+* Dados armazenados no banco de dados;
+* Histórico de ocupação do restaurante.
+
+---
+
+# 🗄️ Banco de Dados
+
+O projeto utiliza o banco de dados **MySQL**.
+
+## Tabela: espacos
+
+Responsável por armazenar as mesas e salas disponíveis.
+
+| Campo      | Tipo    |
+| ---------- | ------- |
+| id         | INT     |
+| nome       | VARCHAR |
+| tipo       | VARCHAR |
+| capacidade | INT     |
+
+---
+
+## Tabela: reservas
+
+Responsável por armazenar as reservas realizadas.
+
+| Campo              | Tipo    |
+| ------------------ | ------- |
+| id                 | INT     |
+| cliente            | VARCHAR |
+| quantidade_pessoas | INT     |
+| tipo_espaco        | VARCHAR |
+| espaco_id          | INT     |
+| data_reserva       | DATE    |
+| horario_inicio     | TIME    |
+| horario_fim        | TIME    |
+| requerimentos      | TEXT    |
+
+---
+
+# 💻 Tecnologias Utilizadas
+
+* Java
+* MySQL
+* JDBC
+* IntelliJ IDEA
+* Programação Orientada a Objetos (POO)
+
+---
+
+# 🚀 Como Executar
+
+### 1. Criar o banco de dados
+
+```sql
+CREATE DATABASE restaurante;
+```
+
+### 2. Executar o script das tabelas
+
+Criar as tabelas:
+
+* espacos
+* reservas
+
+---
+
+### 3. Configurar a conexão
+
+No arquivo:
+
+```java
+Conexao.java
+```
+
+Informar:
+
+```java
+URL do banco
+Usuário
+Senha
+```
+
+---
+
+### 4. Executar o projeto
+
+Abrir o projeto na IDE e executar:
+
+```java
+Main.java
+```
+
+---
+
+# 📚 Conceitos Aplicados
+
+Durante o desenvolvimento foram utilizados conceitos importantes da Engenharia de Software e Programação:
+
+* Programação Orientada a Objetos;
+* Encapsulamento;
+* Classes e Objetos;
+* Persistência de Dados;
+* JDBC;
+* Tratamento de Exceções;
+* Estruturas Condicionais;
+* Estruturas de Repetição;
+* Banco de Dados Relacional;
+* CRUD (Create, Read, Update e Delete).
+
+---
+
+# 📌 Considerações Finais
+
+O Sistema de Reservas para Restaurante foi desenvolvido com o objetivo de simular um ambiente real de gerenciamento de reservas, permitindo o controle eficiente de mesas e salas, a prevenção de conflitos de horários e o armazenamento permanente das informações em banco de dados.
+
+O projeto demonstra a aplicação prática dos conceitos estudados ao longo da disciplina, integrando programação orientada a objetos, persistência de dados e modelagem de sistemas em uma solução funcional e escalável.
