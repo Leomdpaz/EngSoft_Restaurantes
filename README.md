@@ -32,7 +32,7 @@ O sistema foi desenvolvido considerando quatro tipos de usuários:
 ## Administrador
 ## Equipe da Cozinha
 
-- Usuários diferentes de clientes são considerados funcionários e é solicitada uma senha para a realização do login. Esta sendo _123_
+- Usuários diferentes de clientes são considerados funcionários e é solicitada uma senha para a realização do login. Esta, sendo _123_
 Apenas para fins mais interativos.
 
 ---
