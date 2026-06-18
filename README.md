@@ -152,7 +152,7 @@ Resultado:
 
 # 🗄️ Banco de Dados
 
-O projeto utiliza o banco de dados **MySQL**.
+O projeto utiliza o banco de dados **MySQL**. Foram instalados o MySQL Server, Shell, Router, Workbench para poder manejar o banco e MySQL Connection para estabelecer a conexão ao Intellij.
 
 ## Tabela: espacos
 
@@ -203,13 +203,53 @@ Responsável por armazenar as reservas realizadas.
 CREATE DATABASE restaurante;
 ```
 
-### 2. Executar o script das tabelas
+### 2. Executar o script das tabelas e inserir dados
 
 Criar as tabelas:
 
 * espacos
-* reservas
 
+```sql
+CREATE TABLE espacos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    tipo VARCHAR(20) NOT NULL,
+    capacidade INT NOT NULL
+)
+```
+
+* reservas
+  
+```sql
+CREATE TABLE reservas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente VARCHAR(100) NOT NULL,
+    quantidade_pessoas INT NOT NULL,
+    tipo_espaco VARCHAR(20) NOT NULL,
+    espaco_id INT NOT NULL,
+    data_reserva DATE NOT NULL,
+    horario_inicio TIME NOT NULL,
+    horario_fim TIME NOT NULL,
+    requerimentos TEXT,
+
+    CONSTRAINT fk_reserva_espaco
+        FOREIGN KEY (espaco_id)
+        REFERENCES espacos(id)
+        ON DELETE CASCADE)
+```
+_Usando em ambos um id para garantir uma **PK**_
+
+Inserir dados iniciais diretamente no banco de dados para teste:
+
+```sql
+INSERT INTO espacos (nome, tipo, capacidade) VALUES
+('Mesa 1', 'MESA', 2),
+('Mesa 2', 'MESA', 4),
+('Mesa 3', 'MESA', 6),
+('Mesa 4', 'MESA', 8),
+('Sala Executiva', 'SALA', 10),
+('Sala Premium', 'SALA', 20);
+```
 ---
 
 ### 3. Configurar a conexão
@@ -225,7 +265,7 @@ Informar:
 ```java
 URL do banco
 Usuário
-Senha
+Senha (Usei 123)
 ```
 
 ---
