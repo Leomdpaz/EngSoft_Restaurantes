@@ -8,6 +8,11 @@ O sistema foi desenvolvido como parte do **Projeto Semestral da disciplina de Pr
 
 A aplicação foi implementada em **Java**, utilizando **Programação Orientada a Objetos (POO)** e integração com banco de dados **MySQL**, permitindo o armazenamento persistente das reservas e dos espaços disponíveis no restaurante.
 
+# Alunos:
+
+* Leonardo Maciel da Paz
+* Victor Enrico Monteiro
+* Victor Bezerra Baptista
 ---
 
 # 🎯 Objetivo
